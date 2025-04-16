@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>FastAPI Time Manager</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/fontawesome.min.css" rel="stylesheet">
+        <link href="css/brands.min.css" rel="stylesheet">
+        <link href="css/solid.min.css" rel="stylesheet">
+        <link href="css/v4-font-face.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">FastAPI Time Manager</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#no1" class="nav-link">Отчет по лабораторной работе №1</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#fastapi-time-manager" class="nav-link">FastAPI Time Manager</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#_1" class="nav-link">Состав проекта</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_2" class="nav-link">Модели</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#task" class="nav-link">Task</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#tag" class="nav-link">Tag</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#reminder" class="nav-link">Reminder</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#category" class="nav-link">Category</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#tasktag" class="nav-link">TaskTag</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#user" class="nav-link">User</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_3" class="nav-link">Эндпоинты</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#auth" class="nav-link">Аутентификация (/auth)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#users" class="nav-link">Пользователи (/users)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#tasks" class="nav-link">Задачи (/tasks)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#categories" class="nav-link">Категории (/categories)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#tags" class="nav-link">Теги (/tags)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#reminders" class="nav-link">Напоминания (/reminders)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_4" class="nav-link">Главная (/)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_5" class="nav-link">Ссылки</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="no1">Отчет по лабораторной работе №1</h1>
+<p><strong>Автор:</strong> Гуторова Инна</p>
+<p><strong>Группа:</strong> К3341</p>
+<h1 id="fastapi-time-manager">FastAPI Time Manager</h1>
+<p>Это веб-приложение для управления задачами, с категорией, тегами, напоминаниями и JWT-аутентификацией. Стек технологий: FastAPI + SQLModel + PostgreSQL.</p>
+<h2 id="_1">Состав проекта</h2>
+<ul>
+<li>Аутентификация и регистрация</li>
+<li>CRUD для задач, тегов, напоминаний, категорий</li>
+<li>Связи между задачами и тегами</li>
+<li>JWT защита всех эндпоинтов</li>
+<li>Документация Swagger (автоматическая от FastAPI)</li>
+</ul>
+<h1 id="_2">Модели</h1>
+<h2 id="task">Task</h2>
+<pre><code>class Task(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    title: str
+    description: Optional[str]
+    due_date: Optional[datetime]
+    completed: bool = False
+    user_id: int = Field(foreign_key=&quot;user.id&quot;)
+    category_id: Optional[int] = Field(foreign_key=&quot;category.id&quot;)
+</code></pre>
+<h2 id="tag">Tag</h2>
+<pre><code>class Tag(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    name: str
+</code></pre>
+<h2 id="reminder">Reminder</h2>
+<pre><code>class Reminder(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    message: str
+    remind_at: datetime
+    task_id: int = Field(foreign_key=&quot;task.id&quot;)
+</code></pre>
+<h2 id="category">Category</h2>
+<pre><code>class Category(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    name: str
+</code></pre>
+<h2 id="tasktag">TaskTag</h2>
+<pre><code>class TaskTagLink(SQLModel, table=True):
+    task_id: int = Field(foreign_key=&quot;task.id&quot;, primary_key=True)
+    tag_id: int = Field(foreign_key=&quot;tag.id&quot;, primary_key=True)
+    is_primary: bool
+</code></pre>
+<h2 id="user">User</h2>
+<pre><code>class User(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    username: str = Field(index=True, unique=True)
+    email: str = Field(index=True, unique=True)
+    hashed_password: str
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    is_active: bool = True
+</code></pre>
+<h1 id="_3">Эндпоинты</h1>
+<blockquote>
+<p>Все эндпоинты, кроме регистрации и логина, требуют авторизации через JWT-токен.</p>
+</blockquote>
+<h2 id="auth">Аутентификация (<code>/auth</code>)</h2>
+<ul>
+<li><code>POST /auth/register</code> — Register</li>
+<li><code>POST /auth/login</code> — Login</li>
+<li><code>GET /auth/me</code> — Read Current User</li>
+<li><code>PATCH /auth/password</code> — Update Password</li>
+</ul>
+<h2 id="users">Пользователи (<code>/users</code>)</h2>
+<ul>
+<li><code>GET /users/me/details</code> — Get Current User Extended</li>
+<li><code>GET /users/</code> — Get All Users</li>
+<li><code>GET /users/{user_id}</code> — Get User By Id</li>
+<li><code>GET /users/{user_id}/details</code> — Get User Extended By Id</li>
+</ul>
+<h2 id="tasks">Задачи (<code>/tasks</code>)</h2>
+<ul>
+<li><code>POST /tasks/</code> — Create Task</li>
+<li><code>GET /tasks/</code> — Read Tasks</li>
+<li><code>GET /tasks/{task_id}</code> — Read Task</li>
+<li><code>PATCH /tasks/{task_id}</code> — Update Task</li>
+<li><code>DELETE /tasks/{task_id}</code> — Delete Task</li>
+<li><code>POST /tasks/{task_id}/tags/{tag_id}</code> — Add Tag To Task</li>
+<li><code>DELETE /tasks/{task_id}/tags/{tag_id}</code> — Remove Tag From Task</li>
+</ul>
+<h2 id="categories">Категории (<code>/categories</code>)</h2>
+<ul>
+<li><code>POST /categories/</code> — Create Category</li>
+<li><code>GET /categories/</code> — Read Categories</li>
+<li><code>GET /categories/{category_id}</code> — Read Category</li>
+<li><code>PATCH /categories/{category_id}</code> — Update Category</li>
+<li><code>DELETE /categories/{category_id}</code> — Delete Category</li>
+</ul>
+<h2 id="tags">Теги (<code>/tags</code>)</h2>
+<ul>
+<li><code>POST /tags/</code> — Create Tag</li>
+<li><code>GET /tags/</code> — Read Tags</li>
+<li><code>GET /tags/{tag_id}</code> — Read Tag</li>
+<li><code>DELETE /tags/{tag_id}</code> — Delete Tag</li>
+</ul>
+<h2 id="reminders">Напоминания (<code>/reminders</code>)</h2>
+<ul>
+<li><code>POST /reminders/</code> — Create Reminder</li>
+<li><code>GET /reminders/</code> — Read Reminders</li>
+<li><code>GET /reminders/{reminder_id}</code> — Read Reminder</li>
+<li><code>DELETE /reminders/{reminder_id}</code> — Delete Reminder</li>
+</ul>
+<h2 id="_4">Главная (<code>/</code>)</h2>
+<ul>
+<li><code>GET /</code> — Read Root</li>
+</ul>
+<h2 id="_5">Ссылки</h2>
+<ul>
+<li><a href="https://github.com/TonikX/ITMO_ICT_WebDevelopment_tools_2024-2025/pull/15">Исходный код</a></li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2025-04-16 22:34:25.087103+00:00
+-->
