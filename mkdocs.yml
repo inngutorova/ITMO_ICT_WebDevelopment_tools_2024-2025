@@ -1,0 +1,10 @@
+site_name: ITMO WebDev Labs Gutorova
+nav:
+  - Главная: docs/index.md
+  - Лабораторная 1:
+    - Документация: docs/lr1/index.md
+  - Лабораторная 2:
+    - Документация: docs/lr2/index.md
+
+
+docs_dir: docs
