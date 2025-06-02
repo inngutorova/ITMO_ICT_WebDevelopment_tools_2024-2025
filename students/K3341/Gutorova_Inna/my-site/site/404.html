@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="/img/favicon.ico">
-        <title>FastAPI Time Manager</title>
+        <title>ITMO WebDev Labs Gutorova</title>
         <link href="/css/bootstrap.min.css" rel="stylesheet">
         <link href="/css/fontawesome.min.css" rel="stylesheet">
         <link href="/css/brands.min.css" rel="stylesheet">
@@ -24,10 +24,38 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="/.">FastAPI Time Manager</a>
+                <a class="navbar-brand" href="/.">ITMO WebDev Labs Gutorova</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
                 <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="/." class="nav-link">Главная</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Лабораторная 1</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="/lr1/" class="dropdown-item">Документация</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Лабораторная 2</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="/lr2/" class="dropdown-item">Документация</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
 
                     <ul class="nav navbar-nav ms-md-auto">
                         <li class="nav-item">

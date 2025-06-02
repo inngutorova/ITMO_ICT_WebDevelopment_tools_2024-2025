@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Документация - ITMO WebDev Labs Gutorova</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">ITMO WebDev Labs Gutorova</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Главная</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Лабораторная 1</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../lr1/" class="dropdown-item">Документация</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Лабораторная 2</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Документация</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../lr1/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#2-python" class="nav-link">Лабораторная работа 2: Потоки, процессы и асинхронность в Python</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#1" class="nav-link">Задача 1: Вычисление суммы чисел</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-" class="nav-link">Задача 2: Парсинг веб-страниц</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#main" class="nav-link">Ключевые различия в организации main()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_5" class="nav-link">Выводы</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="2-python">Лабораторная работа 2: Потоки, процессы и асинхронность в Python</h1>
+<h2 id="1">Задача 1: Вычисление суммы чисел</h2>
+<h3 id="1-threading">1. Threading (потоки)</h3>
+<pre><code>def threading_sum():
+    num_threads = 4
+    result = [0] * num_threads  # Общий mutable объект для результатов
+    threads = []
+
+    for i in range(num_threads):
+        # Создание и запуск потоков
+        thread = threading.Thread(target=calculate_sum, 
+                               args=(start, end, result, i))
+        threads.append(thread)
+        thread.start()
+
+    for thread in threads:
+        thread.join()  # Ожидание завершения всех потоков
+
+    total_sum = sum(result)
+</code></pre>
+<p><strong>Особенности:</strong>
+- Используется общий список <code>result</code> для сбора результатов
+- Явное создание и запуск каждого потока
+- Обязательное использование <code>join()</code> для синхронизации</p>
+<h3 id="2-multiprocessing">2. Multiprocessing (процессы)</h3>
+<pre><code>def multiprocessing_sum():
+    with multiprocessing.Pool(processes=num_processes) as pool:
+        # Распределение работы между процессами
+        results = pool.map(calculate_sum, ranges)
+
+    total_sum = sum(results)
+</code></pre>
+<p><strong>Особенности:</strong>
+- Используется <code>Pool</code> для управления пулом процессов
+- <code>map</code> автоматически распределяет задачи
+- Нет необходимости в ручном управлении процессами
+- Процессы полностью изолированы (нет shared memory)</p>
+<h3 id="3-async">3. Async (асинхронность)</h3>
+<pre><code>async def async_sum():
+    tasks = []
+    for i in range(num_tasks):
+        # Создание асинхронных задач
+        task = asyncio.create_task(calculate_sum(start, end))
+        tasks.append(task)
+
+    # Параллельное выполнение задач
+    results = await asyncio.gather(*tasks)
+    total_sum = sum(results)
+</code></pre>
+<p><strong>Особенности:</strong>
+- Используется <code>create_task</code> для планирования корутин
+- <code>gather</code> ожидает завершения всех задач
+- Все выполняется в одном потоке
+- Нет реального параллелизма (кооперативная многозадачность)</p>
+<hr />
+<h2 id="2-">Задача 2: Парсинг веб-страниц</h2>
+<h3 id="_1">Источники данных</h3>
+<p>Для парсинга были выбраны issue-трекеры популярных GitHub-репозиториев:
+1. <a href="https://github.com/microsoft/vscode/issues">VS Code</a>
+2. <a href="https://github.com/facebook/react/issues">React</a>
+3. <a href="https://github.com/tensorflow/tensorflow/issues">TensorFlow</a></p>
+<h3 id="_2">Парсинг данных</h3>
+<p>Для каждого репозитория извлекалась следующая информация:</p>
+<pre><code>{
+    &quot;title&quot;: &quot;Название issue&quot;,
+    &quot;number&quot;: &quot;Номер issue (#12345)&quot;,
+    &quot;status&quot;: &quot;open/closed&quot;,
+    &quot;author&quot;: &quot;Автор issue&quot;,
+    &quot;created_date&quot;: &quot;Дата создания&quot;,
+    &quot;labels&quot;: [&quot;bug&quot;, &quot;enhancement&quot;, ...]
+}
+</code></pre>
+<h4 id="issue">Пример реального спарсенного issue:</h4>
+<pre><code>{
+    &quot;title&quot;: &quot;Improve error handling in component X&quot;,
+    &quot;number&quot;: &quot;#21543&quot;,
+    &quot;status&quot;: &quot;open&quot;,
+    &quot;author&quot;: &quot;developer123&quot;,
+    &quot;created_date&quot;: &quot;2023-05-15&quot;,
+    &quot;labels&quot;: [&quot;bug&quot;, &quot;good first issue&quot;]
+}
+</code></pre>
+<h3 id="_3">Алгоритм парсинга</h3>
+<ol>
+<li><strong>Получение HTML</strong>:</li>
+</ol>
+<pre><code>   # Для синхронных версий
+   response = requests.get(issues_url, headers=headers)
+   soup = BeautifulSoup(response.text, 'html.parser')
+
+   # Для async версии
+   async with session.get(issues_url) as response:
+       html = await response.text()
+       soup = BeautifulSoup(html, 'html.parser')
+</code></pre>
+<ol>
+<li><strong>Извлечение данных</strong>:</li>
+<li>Поиск элементов по CSS-селекторам:</li>
+</ol>
+<pre><code>   item.select('.ListItems-module__listItem--Blv7W')  # Контейнеры issues
+   item.select_one('.IssuePullRequestTitle-module__title')  # Заголовок
+</code></pre>
+<ol>
+<li><strong>Обработка даты</strong>:
+   Специальная функция для конвертации строковых дат GitHub:</li>
+</ol>
+<pre><code>   def parse_date(date_str):
+       # Пример входных данных: &quot;on May 15, 2023&quot;
+       clean_str = date_str.replace(&quot;on &quot;, &quot;&quot;)
+       return datetime.strptime(clean_str, &quot;%b %d, %Y&quot;)
+</code></pre>
+<p>Процесс сохранения:
+1. Создание задачи:</p>
+<pre><code>   task = Task(
+       title=f&quot;{repo_name} #{issue_number}&quot;,
+       description=f&quot;Issue: {title}\nStatus: {status}...&quot;,
+       priority=Priority.high if 'bug' in labels else Priority.medium,
+       status=Status.todo
+   )
+   session.add(task)
+</code></pre>
+<ol>
+<li>Обработка тегов (многие-ко-многим):</li>
+</ol>
+<pre><code>   for label in labels:
+       tag = session.query(Tag).filter_by(name=label).first()
+       if not tag:
+           tag = Tag(name=label)
+           session.add(tag)
+       session.add(TaskTag(task_id=task.id, tag_id=tag.id))
+</code></pre>
+<h3 id="_4">Особенности реализации для каждого подхода</h3>
+<ol>
+<li><strong>Threading</strong>:</li>
+<li>Общая сессия БД между потоками</li>
+<li>Риск race condition при работе с БД</li>
+<li>
+<p>Требуется явная синхронизация (не реализована)</p>
+</li>
+<li>
+<p><strong>Multiprocessing</strong>:</p>
+</li>
+<li>Каждый процесс имеет свою сессию БД</li>
+<li>Автоматическая изоляция данных</li>
+<li>
+<p>Высокие накладные расходы на создание процессов</p>
+</li>
+<li>
+<p><strong>Async</strong>:</p>
+</li>
+<li>Асинхронная сессия БД (AsyncSession)</li>
+<li>Использование <code>await</code> для всех IO-операций</li>
+<li>Наиболее эффективное решение для данной задачи</li>
+</ol>
+<h3 id="1-threading_1">1. Threading</h3>
+<pre><code>def main():
+    threads = []
+    for repo in REPOSITORIES:
+        # Создание потока для каждого URL
+        thread = threading.Thread(target=parse_and_save, args=(repo,))
+        thread.start()
+        threads.append(thread)
+
+    for thread in threads:
+        thread.join()  # Ожидание завершения
+</code></pre>
+<p><strong>Проблемы:</strong>
+- При большой нагрузке может создать слишком много потоков
+- Блокирующие IO-операции
+- Потенциальные race condition при работе с БД</p>
+<h3 id="2-multiprocessing_1">2. Multiprocessing</h3>
+<pre><code>def main():
+    processes = []
+    for repo in REPOSITORIES:
+        # Создание отдельного процесса
+        process = multiprocessing.Process(
+            target=parse_and_save,
+            args=(repo,)
+        )
+        process.start()
+        processes.append(process)
+
+    for process in processes:
+        process.join()  # Синхронизация
+</code></pre>
+<p><strong>Особенности:</strong>
+- Полная изоляция процессов
+- Высокие накладные расходы на создание
+- Требуется отдельное соединение с БД для каждого процесса</p>
+<h3 id="3-async_1">3. Async</h3>
+<pre><code>async def main():
+    async with aiohttp.ClientSession() as session:
+        # Создание задач для всех URL
+        tasks = [parse_and_save(repo, session) for repo in REPOSITORIES]
+        await asyncio.gather(*tasks)  # Параллельное выполнение
+</code></pre>
+<p><strong>Преимущества:</strong>
+- Одна сессия для всех запросов
+- Нет накладных расходов на создание потоков/процессов
+- Наиболее эффективное использование ресурсов для I/O операций</p>
+<h2 id="main">Ключевые различия в организации <code>main()</code></h2>
+<table>
+<thead>
+<tr>
+<th>Аспект</th>
+<th>Threading</th>
+<th>Multiprocessing</th>
+<th>Async</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Создание задач</td>
+<td><code>Thread(target=...)</code></td>
+<td><code>Process(target=...)</code></td>
+<td><code>create_task()</code></td>
+</tr>
+<tr>
+<td>Запуск</td>
+<td><code>.start()</code></td>
+<td><code>.start()</code></td>
+<td>Не требуется (авто)</td>
+</tr>
+<tr>
+<td>Ожидание завершения</td>
+<td><code>.join()</code></td>
+<td><code>.join()</code></td>
+<td><code>await gather()</code></td>
+</tr>
+<tr>
+<td>Параллелизм</td>
+<td>Псевдо- (GIL)</td>
+<td>Настоящий</td>
+<td>Кооперативный</td>
+</tr>
+<tr>
+<td>Обмен данными</td>
+<td>Общая память</td>
+<td>IPC (межпроцессное)</td>
+<td>Через event loop</td>
+</tr>
+<tr>
+<td>Подходит для</td>
+<td>I/O с блокировками</td>
+<td>CPU-intensive</td>
+<td>I/O без блокировок</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">Выводы</h2>
+<ol>
+<li><strong>Threading</strong>:</li>
+<li>Простая модель для I/O-bound задач</li>
+<li>Требует ручного управления потоками</li>
+<li>
+<p>Проблемы с GIL и синхронизацией</p>
+</li>
+<li>
+<p><strong>Multiprocessing</strong>:</p>
+</li>
+<li>Настоящий параллелизм для CPU-bound задач</li>
+<li>Высокие накладные расходы</li>
+<li>
+<p>Сложности с разделяемыми ресурсами</p>
+</li>
+<li>
+<p><strong>Async</strong>:</p>
+</li>
+<li>Максимальная эффективность для I/O</li>
+<li>Требует переписывания кода под async/await</li>
+<li>Нет реального параллелизма вычислений</li>
+</ol></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
